@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Happy New Year Aalutikkiburger 🐱🎆</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Comic Sans MS', 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #ffd6e8, #fff1c1);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .card {
+      background: white;
+      padding: 25px;
+      border-radius: 20px;
+      width: 92%;
+      max-width: 450px;
+      box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 26px;
+      margin-bottom: 10px;
+    }
+
+    .cat {
+      font-size: 55px;
+      margin: 10px 0;
+    }
+
+    img {
+      width: 100%;
+      border-radius: 15px;
+      margin: 10px 0;
+    }
+
+    p {
+      font-size: 16px;
+      margin: 12px 0;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      margin: 6px;
+      transition: transform 0.2s;
+    }
+
+    button:hover {
+      transform: scale(1.08);
+    }
+
+    .yes {
+      background: #4caf50;
+      color: white;
+    }
+
+    .no {
+      background: #ff5252;
+      color: white;
+    }
+
+    .message {
+      margin-top: 15px;
+      font-size: 17px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+<div class="card">
+
+  <h1>🎆 Happy New Year, Aalutikkiburger 🎆</h1>
+  <div class="cat">🐱✨</div>
+
+  <!-- QUESTION 1 -->
+  <img src="eyes.jpg" alt="Eyes photo">
+  <p>
+    These eyes survived 2025…  
+    Question is — will they tolerate **me** in 2026 too?
+  </p>   
+   <button class="yes" onclick="yesStep(1)">YES 😼</button>
+   <button class="no" id="no1" onclick="moveNo(1)">NO 🙄</button>
+   <div class="message" id="msg1"></div>
+
+  <!-- QUESTION 2 -->
+  <div id="q2" style="display:none;">
+    <img src="hand.jpg" alt="Hand photo">
+    <p>
+      This hand disappeared for 3 months 😐  
+      Should we agree to **no vanishing acts** next year?
+    </p>
+    <button class="yes" onclick="yesStep(2)">DEAL 🤝</button>
+    <button class="no" id="no2" onclick="moveNo(2)">CAN'T PROMISE 😶</button>
+    <div class="message" id="msg2"></div>
+
+  <!-- QUESTION 3 -->
+  <div id="q3" style="display:none;">
+    <img src="finger.jpg" alt="Finger photo">
+    <p>
+      If we fight again…  
+      should we talk it out instead of going ghost mode? 👀
+    </p>
+    <button class="yes" onclick="finalYes()">YES 💛</button>
+    <button class="no" id="no3" onclick="moveNo(3)">NO 😈</button>
+     <div class="message" id="msg3"></div>
+
+</div>
+
+<script>
+  let noCount = {1:0, 2:0, 3:0};
+
+  function yesStep(step) {
+    if(step === 1){
+      document.getElementById("msg1").innerHTML =
+        "😸 hihihi good girl mujhe pta tha tu yess kregi.";
+      document.getElementById("q2").style.display = "block";
+    }
+
+    if(step === 2){
+      document.getElementById("msg2").innerHTML =
+        "🥹toh deal pakki ab mai tujhe ek aur saal pareshan krunga.";
+      document.getElementById("q3").style.display = "block";
+    }
+  }
+
+  function moveNo(step){
+    noCount[step]++;
+
+    const btn = document.getElementById("no"+step);
+    const msg = document.getElementById("msg"+step);
+
+    // move button randomly
+    const x = Math.random() * 120 - 60;
+    const y = Math.random() * 120 - 60;
+    btn.style.transform = `translate(${x}px, ${y}px)`;
+
+    if(noCount[step] === 1){
+      msg.innerHTML = "😼 na beta na ek aur bar no mt krna.";
+    } 
+    else if(noCount[step] === 2){
+      msg.innerHTML = "🙀 tu jyada dur nhi h ghar pr aakr repta marunga butki.";
+    } 
+    else if(noCount[step] >= 3){
+      msg.innerHTML = "😹 Ab maan bhi jaa re, yes ke aalawa koi choice nhi h .";
+    }
+  }
+
+  function finalYes(){
+    document.getElementById("msg3").innerHTML =
+      "💖 Then it’s settled. <br><br>" +
+      "Aalutikkiburger 🤍<br>" +
+      "We fought. We disappeared. It hurt. <br>" +
+      "But I don’t want a year without you again. <br><br>" +
+      "Stay with me in 2026 — chaos, laughs, fights, fixes, all of it. 🐾✨";
+  }
+</script>
+
+</body>
+</html>
